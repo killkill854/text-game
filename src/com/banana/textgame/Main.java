@@ -1,5 +1,7 @@
 package com.banana.textgame;
 
+import java.util.Scanner;
+
 public class Main {
 int Banan = 85;
     /*
@@ -25,15 +27,28 @@ int Banan = 85;
      * Метод вызывается один раз при старте игры.
      */
     void onStart() {
-        System.out.println("Banan_MAcxdho");
-        System.out.println(Banan);
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Who are you?");
+        String  answer = keyboard.nextLine();
+        System.out.println("Hello," + answer);
+
+
     }
+     int dollars = 0;
 
     /*
      * Метод вызывается каждый игровый день.
      * Единственный параметр: dayNumber - номер текущего игрового дня.
      */
     void onNewDay(int dayNumber) {
+        System.out.println("День номер "+ dayNumber + ".");
+
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Enter cod on this day "+ dayNumber + "." + "" +
+                "You monney =" + dollars +"$.");
+        String cod = keyboard.nextLine();
+        dollars = dollars + cod.length();
+
 
     }
 
