@@ -1,7 +1,7 @@
 package com.banana.textgame;
 
 public class Main {
-
+int Banan = 85;
     /*
      * Главный метод.
      */
@@ -26,7 +26,7 @@ public class Main {
      */
     void onStart() {
         System.out.println("Banan_MAcxdho");
-
+        System.out.println(Banan);
     }
 
     /*
