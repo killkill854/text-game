@@ -3,6 +3,7 @@ package com.banana.textgame;
 import java.util.Scanner;
 
 public class Main {
+    boolean tired = false;
     int Banan = 85;
     /*
      * Главный метод.
@@ -43,26 +44,67 @@ public class Main {
      */
     void onNewDay(int dayNumber) {
         System.out.println("День номер "+ dayNumber + ".");
+        String dollarsString = "";
+        for (int i = 0; i<dollars; i = i + 1){
+            dollarsString = dollarsString +"$";
+        }
+//        int i = 0;
+
+//        while (i < dollars){
+//
+//            dollarsString = dollarsString + "$";
+//
+//            i= i + 1;
+//
+//        }
+//        System.out.println("Ваш счёт: "+ dollarsString + ".");
 
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Ваше действие ");
         String action = keyboard.nextLine();
-        if (action.equals("кофе")) {
-            dollars -= 2;
-            System.out.println("Кофе. Ура!");
-        }else if (action.equals("код")) {
-            System.out.println("Enter cod on this day "+ dayNumber + "." + "" +
-                    "You monney =" + dollars +"$.");
-            String cod = keyboard.nextLine();
-            System.out.println("You are HALAVSHIK!: " + (cod.startsWith(" ") && cod.endsWith(" ")));
 
-            dollars = dollars + cod.length();
-        }else if (action.equals("Поесть")){
-            dollars -= 10;
-            System.out.println("Наконецто, еда!!!!");
+        switch (action.toLowerCase()){
+            case "код" :
+                System.out.println("Enter cod on this day "+ dayNumber + "." + "" +
+                        "You monney =" + dollars +"$.");
+                String cod = keyboard.nextLine();
+                System.out.println("You are HALAVSHIK!: " + (cod.startsWith(" ") && cod.endsWith(" ")));
 
-        }else {
-            System.out.println("Операция не подерживается ;(");
+                dollars = dollars + cod.length();
+                break;
+                
+            case "кофе":
+                dollars -= 2;
+                System.out.println("Кофе. Ура!");
+                break;
+            
+            case "поесть":
+                dollars -= 10;
+                System.out.println("Наконецто, еда!!!!");
+
+            case "устал":
+                tired = true;
+                break;
+
+            default:
+                System.out.println("Операция не подерживается");
+        }
+//        if (action.equals("кофе")) {
+//            dollars -= 2;
+//            System.out.println("Кофе. Ура!");
+//        }else if (action.equals("код")) {
+//            System.out.println("Enter cod on this day "+ dayNumber + "." + "" +
+//                    "You monney =" + dollars +"$.");
+//            String cod = keyboard.nextLine();
+//            System.out.println("You are HALAVSHIK!: " + (cod.startsWith(" ") && cod.endsWith(" ")));
+//
+//            dollars = dollars + cod.length();
+//        }else if (action.equals("Поесть")){
+//            dollars -= 10;
+//            System.out.println("Наконецто, еда!!!!");
+//
+//        }else {
+//            System.out.println("Операция не подерживается");
         }
 //        System.out.println("Enter cod on this day "+ dayNumber + "." + "" +
 //                "You monney =" + dollars +"$.");
@@ -72,7 +114,7 @@ public class Main {
 //        dollars = dollars + cod.length();
 
 
-    }
+    //}
 
     /*
      * Метод вызывается по завершению игры.
@@ -81,4 +123,4 @@ public class Main {
 
     }
 
-}
+} 
