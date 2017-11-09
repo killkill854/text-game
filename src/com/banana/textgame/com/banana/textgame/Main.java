@@ -3,7 +3,7 @@ package com.banana.textgame;
 import java.util.Scanner;
 
 public class Main {
-    boolean tired = false;
+
     int Banan = 85;
     /*
      * Главный метод.
@@ -29,14 +29,20 @@ public class Main {
      */
     void onStart() {
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("Who are you?");
+        String[] variants = {"Кто вы такой?", "Как вас называть?", "Мргллрг"};
+        String v = variants[(int) (Math.random() * variants.length)];
+        System.out.println(v);
         String  answer = keyboard.nextLine();
         System.out.println("Hello," + answer);
 
 
     }
-
+    boolean tired = false;
     int dollars = 0;
+    String[] languages = {"Java", "Kotlin", "Paskal", "BananaLanguage", "C++"};
+    boolean[] knowLanguage = {true, false, false, false, false};
+    Scanner keyboard = new Scanner(System.in);
+    int i = 0;
 
     /*
      * Метод вызывается каждый игровый день.
@@ -48,6 +54,7 @@ public class Main {
         for (int i = 0; i<dollars; i = i + 1){
             dollarsString = dollarsString +"$";
         }
+        напечатайИзвестныеЯзыки();
 //        int i = 0;
 
 //        while (i < dollars){
@@ -59,7 +66,7 @@ public class Main {
 //        }
 //        System.out.println("Ваш счёт: "+ dollarsString + ".");
 
-        Scanner keyboard = new Scanner(System.in);
+
         System.out.println("Ваше действие ");
         String action = keyboard.nextLine();
 
@@ -85,10 +92,20 @@ public class Main {
             case "устал":
                 tired = true;
                 break;
+            case "изучить":
+                learnLanguage();
+                System.out.println(languages[i]);
+
+
+                break;
 
             default:
                 System.out.println("Операция не подерживается");
+
         }
+
+
+
 //        if (action.equals("кофе")) {
 //            dollars -= 2;
 //            System.out.println("Кофе. Ура!");
@@ -106,6 +123,7 @@ public class Main {
 //        }else {
 //            System.out.println("Операция не подерживается");
         }
+
 //        System.out.println("Enter cod on this day "+ dayNumber + "." + "" +
 //                "You monney =" + dollars +"$.");
 //        String cod = keyboard.nextLine();
@@ -122,5 +140,25 @@ public class Main {
     void onFinish() {
 
     }
+
+void learnLanguage (){
+    System.out.println("Какой язык будем учить?");
+    String language = keyboard.nextLine();
+
+     for (int i = 0; i< languages.length; i++){
+         if (languages[i].equals(language)){
+             knowLanguage[i] = true;
+             dollars -= 100;
+         }
+     }
+}
+void напечатайИзвестныеЯзыки(){
+    System.out.println("Вы знаете следующие языки: ");
+    for (int i = 0; i< languages.length; i++){
+        if (knowLanguage[i] == true){
+            System.out.println(languages[i]);
+        }
+    }
+}
 
 } 
