@@ -1,10 +1,12 @@
 package com.banana.textgame;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     int Banan = 85;
+
 
     /*
      * Главный метод.
@@ -44,6 +46,8 @@ public class Main {
 
     }
 
+
+    ArrayList companies = new ArrayList();
     boolean tired = false;
     int dollars = 0;
     String[] languages = {"Java", "Kotlin", "Paskal", "BananaLanguage", "C++"};
@@ -73,6 +77,12 @@ public class Main {
 //        }
 //        System.out.println("Ваш счёт: "+ dollarsString + ".");
 
+
+
+       System.out.println("Компании");
+        for (int i = 0; i < companies.size(); ++i) {
+            System.out.println("- " + companies.get(i));
+        }
 
         System.out.println("Ваше действие ");
         String action = keyboard.nextLine();
@@ -104,6 +114,11 @@ public class Main {
 
 
                 break;
+            case "работа":
+                НайтиРаботу();
+
+                break;
+
 
             default:
                 System.out.println("Операция не подерживается");
@@ -170,9 +185,14 @@ public class Main {
 
     void съестьПиццу() {
         System.out.println("Сколько кусков пиццы?");
-        int количествоКусков = keyboard.nextInt();
-        keyboard.nextLine();
-        съестьПиццу(количествоКусков, 2);
+        String строка = keyboard.nextLine();
+
+        try {
+            int количествоКусков = Integer.parseInt(строка);
+            съестьПиццу(количествоКусков, 2);
+        }catch (Exception e){
+            System.out.println("Ошибка!!!!");
+        }
 
     }
 
@@ -181,6 +201,13 @@ public class Main {
         dollars -= стоимостьПиццы * количествоКусков;
         System.out.println("Вы скушали " + количествоКусков + " кусочков пиццы  " + "You monney =" + dollars + "$.");
 
+    }
+
+    void НайтиРаботу () {
+
+        System.out.println("В какую компанию поступим?");
+        String compani = keyboard.nextLine();
+        companies.add(compani);
     }
 
     int верниОчки() {
