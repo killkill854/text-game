@@ -32,6 +32,8 @@ public class Main {
      */
 
     void onStart() {
+        System.out.println("привет" == "при"+"вет");
+
         for (int i=0 ; i<10 ;++i){
             System.out.println("Загрузка: "+ (i * 10) + "%");
         }
@@ -183,19 +185,23 @@ public class Main {
         }
     }
 
+
     void съестьПиццу() {
+        boolean корректныйВвод = false;
+        while (корректныйВвод == false){
         System.out.println("Сколько кусков пиццы?");
         String строка = keyboard.nextLine();
 
         try {
             int количествоКусков = Integer.parseInt(строка);
             съестьПиццу(количествоКусков, 2);
-        }catch (Exception e){
-            System.out.println("Ошибка!!!!");
-        }
+            корректныйВвод = true;
+        }catch (Exception e)
+    {
+        System.out.println("Ошибка!!!!");
+    }}
 
-    }
-
+}
     void съестьПиццу(int количествоКусков, int стоимостьПиццы) {
 
         dollars -= стоимостьПиццы * количествоКусков;
