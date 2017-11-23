@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    Scanner keyboard = new Scanner(System.in);
+   static String[] languages = {"Java", "Kotlin", "Paskal", "BananaLanguage", "C++"};
+//   boolean tired = false;
+//    int dollars = 0;
+//    boolean[] knowLanguage = {true, false, false, false, false};
+//    ArrayList companies = new ArrayList();
+User user = new User(); // Перенос из класса User
 
     int Banan = 85;
 
@@ -49,12 +56,8 @@ public class Main {
     }
 
 
-    ArrayList companies = new ArrayList();
-    boolean tired = false;
-    int dollars = 0;
-    String[] languages = {"Java", "Kotlin", "Paskal", "BananaLanguage", "C++"};
-    boolean[] knowLanguage = {true, false, false, false, false};
-    Scanner keyboard = new Scanner(System.in);
+
+
     int i = 0;
 
     /*
@@ -63,28 +66,11 @@ public class Main {
      */
     void onNewDay(int dayNumber) {
         System.out.println("День номер " + dayNumber + ".");
-        String dollarsString = "";
-        for (int i = 0; i < dollars; i = i + 1) {
-            dollarsString = dollarsString + "$";
-        }
-        напечатайИзвестныеЯзыки();
-//        int i = 0;
-
-//        while (i < dollars){
-//
-//            dollarsString = dollarsString + "$";
-//
-//            i= i + 1;
-//
-//        }
-//        System.out.println("Ваш счёт: "+ dollarsString + ".");
 
 
 
-       System.out.println("Компании");
-        for (int i = 0; i < companies.size(); ++i) {
-            System.out.println("- " + companies.get(i));
-        }
+
+
 
         System.out.println("Ваше действие ");
         String action = keyboard.nextLine();
@@ -92,15 +78,15 @@ public class Main {
         switch (action.toLowerCase()) {
             case "код":
                 System.out.println("Enter cod on this day " + dayNumber + "." + "" +
-                        "You monney =" + dollars + "$.");
+                        "You monney =" + user.dollars + "$.");
                 String cod = keyboard.nextLine();
                 System.out.println("You are HALAVSHIK!: " + (cod.startsWith(" ") && cod.endsWith(" ")));
 
-                dollars = dollars + cod.length();
+                user.dollars = user.dollars + cod.length();
                 break;
 
             case "кофе":
-                dollars -= 2;
+                user.dollars -= 2;
                 System.out.println("Кофе. Ура!");
                 break;
 
@@ -108,7 +94,7 @@ public class Main {
                 съестьПиццу();
 
             case "устал":
-                tired = true;
+                user.tired = true;
                 break;
             case "изучить":
                 learnLanguage();
@@ -170,17 +156,8 @@ public class Main {
 
         for (int i = 0; i < languages.length; i++) {
             if (languages[i].equals(language)) {
-                knowLanguage[i] = true;
-                dollars -= 100;
-            }
-        }
-    }
-
-    void напечатайИзвестныеЯзыки() {
-        System.out.println("Вы знаете следующие языки: ");
-        for (int i = 0; i < languages.length; i++) {
-            if (knowLanguage[i] == true) {
-                System.out.println(languages[i]);
+                user.knowLanguage[i] = true;
+                user.dollars -= 100;
             }
         }
     }
@@ -204,8 +181,9 @@ public class Main {
 }
     void съестьПиццу(int количествоКусков, int стоимостьПиццы) {
 
-        dollars -= стоимостьПиццы * количествоКусков;
-        System.out.println("Вы скушали " + количествоКусков + " кусочков пиццы  " + "You monney =" + dollars + "$.");
+        Pizza вкуснаяПицца = new Pizza();
+        user.dollars -= вкуснаяПицца.grtPrice(количествоКусков);
+        System.out.println("Вы скушали " + количествоКусков + " кусочков пиццы  " + "You monney =" + user.dollars + "$.");
 
     }
 
@@ -213,13 +191,13 @@ public class Main {
 
         System.out.println("В какую компанию поступим?");
         String compani = keyboard.nextLine();
-        companies.add(compani);
+        user.companies.add(compani);
     }
 
     int верниОчки() {
-        int очки = dollars;
+        int очки = user.dollars;
         for (int i=0; i< languages.length; ++i){
-            if (knowLanguage[i] == true) {
+            if (user.knowLanguage[i] == true) {
                 очки +=10;
             }
         }
