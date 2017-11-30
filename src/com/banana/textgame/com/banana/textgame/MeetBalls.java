@@ -1,14 +1,10 @@
 package com.banana.textgame;
 
-public class Pizza extends Eda {
-    int price = 2;
-
-
+public class MeetBalls extends Eda {
+    int price = 1;
     int grtPrice1(){
         return price;
 
 
     }
-
-
 }

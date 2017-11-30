@@ -1,6 +1,5 @@
 package com.banana.textgame;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -91,8 +90,13 @@ User user = new User(); // Перенос из класса User
                 break;
 
             case "пицца":
-                съестьПиццу();
+                Pizza pizza = new Pizza();
+                съесть(pizza);
+                break;
+            case "фрикадельки":
 
+                съесть( new MeetBalls() );
+                break;
             case "устал":
                 user.tired = true;
                 break;
@@ -163,7 +167,7 @@ User user = new User(); // Перенос из класса User
     }
 
 
-    void съестьПиццу() {
+    void съесть(Eda еда) {
         boolean корректныйВвод = false;
         while (корректныйВвод == false){
         System.out.println("Сколько кусков пиццы?");
@@ -171,7 +175,8 @@ User user = new User(); // Перенос из класса User
 
         try {
             int количествоКусков = Integer.parseInt(строка);
-            съестьПиццу(количествоКусков, 2);
+
+            съесть( еда, количествоКусков, 2);
             корректныйВвод = true;
         }catch (Exception e)
     {
@@ -179,13 +184,13 @@ User user = new User(); // Перенос из класса User
     }}
 
 }
-    void съестьПиццу(int количествоКусков, int стоимостьПиццы) {
+    void съесть(Eda еда, int количествоКусков, int стоимостьПиццы) {
 
-        Pizza вкуснаяПицца = new Pizza();
-        user.dollars -= вкуснаяПицца.grtPrice(количествоКусков);
+                user.dollars -= еда.grtPriceN(количествоКусков);
         System.out.println("Вы скушали " + количествоКусков + " кусочков пиццы  " + "You monney =" + user.dollars + "$.");
 
     }
+
 
     void НайтиРаботу () {
 
